@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-br"> <!-- O tema será definido aqui pelo JS -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinícius Augusto Gimenes | Desenvolvedor & Analista de Dados</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Google Fonts (Inter & Fira Code) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Javascript (defer garante que ele carregue após o HTML) -->
+    <script src="script.js" defer></script>
+</head>
+<body id="body">
+
+    <!-- Links Fixos da Esquerda (Redes Sociais) -->
+    <div class="fixed-socials">
+        <ul>
+            <li>
+                <a href="https://github.com/SEU_USUARIO" target="_blank" rel="noopener noreferrer" title="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                </a>
+            </li>
+            <li>
+                <a href="https://linkedin.com/in/SEU_USUARIO" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- HEADER SUBSTITUÍDO PELA NOVA NAVEGAÇÃO FLUTUANTE -->
+    <header class="header" id="header">
+        <nav class="nav">
+             <div class="nav-menu" id="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="#sobre" class="nav-link"><span class="nav-link-01">01.</span> Sobre</a></li>
+                    <li><a href="#projetos" class="nav-link"><span class="nav-link-02">02.</span> Projetos</a></li>
+                    <li><a href="#habilidades" class="nav-link"><span class="nav-link-03">03.</span> Habilidades</a></li>
+                    <li><a href="#contato" class="nav-link"><span class="nav-link-04">04.</span> Contato</a></li>
+                </ul>
+            </div>
+            <div class="nav-actions">
+                <button id="theme-toggle" title="Alterar tema">
+                    <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- SEÇÃO SOBRE (HERO) com classe 'section' adicionada -->
+        <section id="sobre" class="hero section">
+            <div class="container" id="">
+                <p class="hero-intro-presentation fade-in">hello world! meu nome é</p>
+                <h1 class="hero-title fade-in">Vinícius Augusto Gimenes,</h1>
+                <h2 class="hero-subtitle fade-in">Desenvolvedor Jr.</h2>
+                <p class="hero-description fade-in">
+                Crio soluções que conectam <strong>dados</strong>, <strong>design</strong> e <strong>decisões</strong>.                
+                </p>
+                <div class="hero-buttons fade-in">
+                    <a href="#projetos" class="btn btn-primary">Veja meus projetos</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO DE PROJETOS -->
+        <section id="projetos" class="section">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll"><span>02.</span> Meus Projetos</h2>
+                <div class="projects-grid">
+
+                    <!-- Projeto 1 -->
+                    <div class="project-card animate-on-scroll">
+                        <div class="project-image">
+                            <a href="#">
+                                <img src="src/project-images/" alt="Dashboard Interativo">
+                            </a>
+                        </div>
+                        <div class="project-content">
+                            <p class="project-overline">Análise de Dados</p>
+                            <h3 class="project-title">Dashboard Python + Streamlit</h3>
+                            <div class="project-description">
+                                <p>Dashboard com data pipeline em Python (Streamlit + Pandas), focado em métricas ágeis (SLA, TMO, Ociosidade) e visualização interativa via Plotly.</p>
+                            </div>
+                            <ul class="project-tags">
+                                <li class="tag-python">Python</li>
+                                <li class="tag-streamlit">Streamlit</li>
+                                <li class="tag-pandas">Pandas</li>
+                            </ul>
+                            <div class="project-links">
+                                <a href="#" target="_blank" rel="noopener noreferrer" title="Código Fonte"><svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
+                                <a href="#" target="_blank" rel="noopener noreferrer" title="Ver Demo"><svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projeto 2 -->
+                    <div class="project-card animate-on-scroll">
+                         <div class="project-image">
+                            <a href="#">
+                                <img src="https://firstbenefits.org/wp-content/uploads/2017/10/placeholder-1024x1024.png" alt="Website Institucional">
+                            </a>
+                        </div>
+                        <div class="project-content">
+                            <p class="project-overline">Projeto em Destaque</p>
+                            <h3 class="project-title">Website Institucional com Foco em UI/UX</h3>
+                            <div class="project-description">
+                                <p>Desenvolvimento de um site responsivo a partir de um protótipo criado no Figma. O projeto foca em uma experiência de usuário limpa e em um design moderno e acessível.</p>
+                            </div>
+                            <ul class="project-tags">
+                                <li>HTML5</li>
+                                <li>CSS3</li>
+                                <li>Figma</li>
+                                <li>UI/UX</li>
+                            </ul>
+                            <div class="project-links">
+                                <a href="#" target="_blank" rel="noopener noreferrer" title="Código Fonte"><svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
+                                <a href="#" target="_blank" rel="noopener noreferrer" title="Ver Site"><svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO DE HABILIDADES -->
+        <section id="habilidades" class="section">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll"><span>03.</span> Minhas Habilidades</h2>
+                <div class="skills-grid">
+                    <div class="skill-category animate-on-scroll">
+                        <h3>Linguagens & Dados</h3>
+                        <ul>
+                            <li>Python</li>
+                            <li>SQL</li>
+                            <li>HTML5 & CSS3</li>
+                            <li>JavaScript</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category animate-on-scroll">
+                        <h3>Bibliotecas & Frameworks</h3>
+                        <ul>
+                            <li>Pandas</li>
+                            <li>Streamlit</li>
+                            <li>Scikit-learn</li>
+                            <li>Matplotlib & Seaborn</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category animate-on-scroll">
+                        <h3>Ferramentas & Design</h3>
+                        <ul>
+                            <li>Git & GitHub</li>
+                            <li>MySQL / PostgreSQL</li>
+                            <li>Figma</li>
+                            <li>VS Code</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO DE CONTATO -->
+        <section id="contato" class="section">
+            <div class="container-narrow">
+                 <h2 class="section-title-contact animate-on-scroll"><span>04.</span> Qual o próximo passo?</h2>
+                 <h3 class="contact-title animate-on-scroll">Entre em Contato</h3>
+                <p class="contact-text animate-on-scroll">Estou sempre aberto a novas oportunidades e colaborações. Se você tem uma pergunta ou apenas quer dizer oi, farei o meu melhor para entrar em contato com você!</p>
+                <a href="mailto:viniciusagimenes@outlook.com" class="btn btn-primary animate-on-scroll">Diga Olá</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Design inspirado por Brittany Chiang</p>
+            <p><a href="https://github.com/SEU_USUARIO/SEU_REPO" target="_blank" rel="noopener noreferrer">Construído por Vinícius Augusto Gimenes</a></p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            VANTA.FOG({
+              el: "#sobre", // Aponta para a sua seção hero
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: false,
+                minHeight: 200.00,
+                minWidth: 200.00,
+                highlightColor: 0xcfebef,
+                midtoneColor: 0xf99fed,
+                lowlightColor: 0x9cc7f4,
+                blurFactor: 0.87,
+                speed: 4.30,
+                zoom: 0.20
+            });
+        });
+    </script>
+
+</body>
+</html>

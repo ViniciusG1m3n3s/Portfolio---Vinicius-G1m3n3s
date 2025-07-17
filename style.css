@@ -1,0 +1,667 @@
+/* 1. RESET E VARIÁVEIS DE TEMA */
+:root,
+[data-theme='light'] {
+    --bg-primary: #f8f9fa;
+    --bg-secondary: #ffffff;
+    --bg-header: rgba(248, 249, 250, 0.85);
+    --text-primary: #212529;
+    --text-secondary: #495057;
+    --text-tertiary: #6c757d;
+    --accent-color: #0d6efd;
+    --accent-color-tint: rgba(13, 110, 253, 0.1);
+    --border-color: #dee2e6;
+    --shadow-color: rgba(0, 0, 0, 0.07);
+    --font-primary: 'Inter', sans-serif;
+    --font-mono: 'Inter', monospace;
+    --font-dev: 'Fira Code', monospace;
+    --header-height: 80px;
+
+    /* Cores da Nova Navegação (Light Mode) */
+    --nav-bg: #ffffff;
+    --nav-pill-bg: #e9ecef;
+    --nav-pill-text: #212529;
+    --nav-text: #6c757d;
+    --vanta-bg: #f8f9fa; 
+}
+
+[data-theme='dark'] {
+    --bg-primary: #121212;
+    --bg-secondary: #1e1e1e;
+    --bg-header: rgba(18, 18, 18, 0.85);
+    --text-primary: #f5f5f5;
+    --text-secondary: #b3b3b3;
+    --text-tertiary: #888888;
+    --accent-color: #3ea6ff;
+    --accent-color-tint: rgba(62, 166, 255, 0.1);
+    --border-color: #333333;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+
+    /* Cores da Nova Navegação (Dark Mode - como na imagem) */
+    --nav-bg: #1c1b1b;
+    --nav-pill-bg: #383838;
+    --nav-pill-text: #e0e6e6;
+    --nav-text: #a8b8b8;
+    --vanta-bg: #121212;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ALTERADO: ESTILO DO BODY COM GRADIENTE */
+body {
+    background-color: var(--bg-primary); 
+    color: var(--text-secondary);
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transição de fundo restaurada */
+    -webkit-font-smoothing: antialiased;
+    /* Animação do gradiente foi removida daqui */
+}
+
+/* NOVO: Keyframes para a animação do gradiente do body */
+@keyframes gradient-body {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+/* 2. COMPONENTES REUTILIZÁVEIS E GERAIS */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+.container-narrow {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    text-align: center;
+}
+
+/* ALTERADO: As seções depois da hero terão fundo sólido */
+.section {
+    padding: 6rem 0;
+}
+.section:not(.hero) {
+    background-color: var(--bg-primary);
+    position: relative;
+    z-index: 5;
+}
+
+/* NOVO: Adiciona uma transição visual para a primeira seção sólida */
+#projetos {
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    box-shadow: 0 -15px 30px -15px var(--shadow-color);
+}
+
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    margin-bottom: 3rem;
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    font-weight: 500;
+    white-space: nowrap;
+}
+.section-title span {
+    background: linear-gradient(135deg, #3ea6ff 0%, #a855f7 50%, #ec4899 100%);
+    background-size: 10% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+}
+.section-title::after {
+    content: '';
+    display: block;
+    position: relative;
+    top: 0px;
+    width: 100%;
+    max-width: 300px;
+    height: 1px;
+    background-color: var(--border-color);
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-family: var(--font-mono);
+}
+.btn-primary {
+    background-color: transparent;
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+}
+.btn-primary:hover {
+    background-color: var(--accent-color-tint);
+}
+
+/* 3. ELEMENTOS LATERAIS FIXOS */
+.fixed-socials, .fixed-email {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    width: 40px;
+    z-index: 10;
+}
+.fixed-socials { right: 40px; }
+.fixed-socials ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+.fixed-socials ul::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 90px;
+    background: linear-gradient(135deg, #3ea6ff 0%, #a855f7 50%, #ec4899 100%);
+    margin-top: 1.5rem;
+}
+.fixed-socials ul li a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--text-tertiary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+.fixed-socials svg {
+    width: 20px;
+    height: 20px;
+    color: var(--text-tertiary);
+    transition: color 0.3s ease;
+}
+.fixed-socials ul li a:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-color);
+}
+.fixed-socials ul li a:hover svg {
+    color: var(--accent-color);
+}
+.fixed-email { right: 40px; }
+.fixed-email a {
+    color: var(--text-tertiary);
+    writing-mode: vertical-rl;
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+.fixed-email a:hover {
+    color: var(--accent-color);
+    transform: translateY(-3px);
+}
+.fixed-email::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 90px;
+    background-color: var(--text-tertiary);
+    margin: 1.5rem auto 0;
+}
+
+/* 4. HEADER E NAVEGAÇÃO */
+.header {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    transition: top 0.3s ease;
+}
+.header-scrolled {
+    top: 10px;
+}
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nav-menu {
+    background-color: var(--nav-bg);
+    border-radius: 999px;
+    padding: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border: 1px solid rgba(120, 120, 120, 0.1);
+}
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+}
+.nav-link {
+    padding: 10px 20px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--nav-text);
+    text-decoration: none;
+    border-radius: 999px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.nav-link:hover {
+    color: var(--nav-pill-text);
+}
+.nav-link.active-link {
+    background-color: var(--nav-pill-bg);
+    color: var(--nav-pill-text);
+}
+.nav-link-01 {
+    color: #42a3ff; 
+    margin-right: 0.3rem;
+}
+.nav-link-02 {
+    color: #6886fc;
+    margin-right: 0.3rem;
+}
+.nav-link-03 {
+    color: #8272fa;
+    margin-right: 0.3rem;
+}
+.nav-link-04 {
+    color: #a955f5;
+    margin-right: 0.3rem;
+}
+.nav-actions {
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+}
+#theme-toggle {
+    background: var(--nav-bg);
+    border: 1px solid rgba(120, 120, 120, 0.1);
+    color: var(--nav-text);
+    cursor: pointer;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+#theme-toggle:hover {
+    color: var(--nav-pill-text);
+}
+
+/* 5. SEÇÃO HERO (AJUSTADO) */
+/* ALTERADO: Fundo transparente para mostrar o gradiente do body */
+
+/* NOVO: Garante que o conteúdo da hero fique na frente da animação */
+.hero .container {
+    position: relative;
+    z-index: 2;
+    text-align: left;
+}
+
+/* NOVO: O canvas do Vanta deve ficar no fundo */
+.hero .vanta-canvas {
+    z-index: 0;
+}
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: var(--header-height);
+    position: relative; /* Necessário para o z-index funcionar */
+    /* A cor de fundo será controlada pelo VANTA, mas definimos um fallback */
+    background-color: var(--vanta-bg);
+    transition: background-color 0.3s ease; /* Adiciona transição suave na troca de tema */
+}
+
+.hero .container { text-align: left; }
+.hero-intro-presentation {
+    background: linear-gradient(135deg, #3ea6ff 0%, #a855f7 50%, #ec4899 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-animation 5s ease infinite;    font-family: var(--font-dev);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+.hero-title {
+    font-size: clamp(40px, 8vw, 70px);
+    font-weight: 700;
+    line-height: 1.15;
+    margin: 0;
+    background: linear-gradient(135deg, #3ea6ff 0%, #a855f7 50%, #ec4899 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-animation 5s ease infinite;
+}
+@keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.hero-subtitle {
+    font-size: clamp(40px, 8vw, 70px);
+    color: var(--text-tertiary);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+.hero-description {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 540px;
+    margin-bottom: 3rem;
+}
+.hero-buttons .btn {
+    padding: 1rem 1.75rem;
+    font-size: 1rem;
+    border-radius: 50px;
+}
+
+/* 6. PROJETOS */
+.projects-grid {
+    display: grid;
+    gap: 6rem;
+}
+.project-card {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 10px;
+    align-items: center;
+}
+.project-image {
+    grid-column: 1 / 8;
+    grid-row: 1 / 1;
+    position: relative;
+    z-index: 1;
+    border-radius: 5px;
+}
+.project-image a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    mix-blend-mode: multiply;
+    transition: all 0.3s ease;
+}
+[data-theme='dark'] .project-image img {
+    filter: grayscale(100%) contrast(1) brightness(0.9);
+}
+.project-card:hover .project-image img {
+    filter: none;
+    mix-blend-mode: normal;
+}
+.project-content {
+    grid-column: 7 / -1;
+    grid-row: 1 / 1;
+    text-align: right;
+    z-index: 2;
+    padding: 1rem 0;
+}
+.project-card:nth-of-type(even) .project-image {
+    grid-column: 6 / -1;
+}
+.project-card:nth-of-type(even) .project-content {
+    grid-column: 1 / 7;
+    text-align: left;
+}
+.project-overline {
+    background: linear-gradient(135deg, #3ea6ff 0%, #a855f7 50%, #ec4899 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;    font-family: var(--font-mono);
+    font-size: 0.9rem;
+}
+.project-title {
+    font-size: 1.6rem;
+    color: var(--text-primary);
+    margin: 0.5rem 0 1.5rem;
+}
+.project-description {
+    background-color: var(--bg-secondary);
+    padding: 1.5rem;
+    border-radius: 4px;
+    box-shadow: 0 10px 30px -15px var(--shadow-color);
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+.project-tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin: 1rem 0;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+.project-tags a {
+    color: red;
+    text-decoration: none;
+}
+.project-card:nth-of-type(even) .project-tags {
+    justify-content: flex-start;
+}
+.project-links {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+.project-card:nth-of-type(even) .project-links {
+    justify-content: flex-start;
+}
+.project-links a svg {
+    width: 22px;
+    height: 22px;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+}
+.project-links a:hover svg {
+    color: var(--accent-color);
+}
+
+/* 7. HABILIDADES */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+.skill-category {
+    background-color: var(--bg-secondary);
+    padding: 2rem;
+    border-radius: 4px;
+}
+.skill-category h3 {
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+.skill-category ul {
+    list-style: none;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+.skill-category ul li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+.skill-category ul li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    line-height: 1.8;
+}
+
+/* 8. CONTATO E FOOTER */
+.section-title-contact {
+    justify-content: center;
+    color: var(--accent-color);
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+.section-title-contact::after { display: none; }
+.contact-title {
+    font-size: clamp(40px, 5vw, 60px);
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+.contact-text {
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+}
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    border-top: 1px solid var(--border-color);
+    /* NOVO: Garante que o footer também tenha o fundo sólido */
+    background-color: var(--bg-primary);
+    position: relative;
+    z-index: 5;
+}
+footer p {
+    margin: 0.3rem;
+}
+footer a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+footer a:hover {
+    color: var(--accent-color);
+}
+
+/* 9. ANIMAÇÕES E RESPONSIVIDADE */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+}
+.hero-intro { animation-delay: 0.1s; }
+.hero-title { animation-delay: 0.2s; }
+.hero-subtitle { animation-delay: 0.3s; }
+.hero-description { animation-delay: 0.4s; }
+.hero-buttons { animation-delay: 0.5s; }
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition-delay: 0.2s;
+}
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+    .fixed-socials, .fixed-email { display: block; }
+}
+
+@media (max-width: 768px) {
+    .header {
+        top: 0;
+        left: 0;
+        transform: none;
+        width: 100%;
+        padding: 0.5rem;
+        /* ALTERADO: Usa a variável para o fundo do header */
+        background-color: var(--bg-header); 
+        backdrop-filter: blur(10px); /* Opcional: Efeito de vidro fosco */
+        border-bottom: 1px solid var(--border-color);
+        border-radius: 0;
+    }
+    .nav {
+        justify-content: space-between;
+    }
+    .nav-menu {
+        padding: 4px;
+    }
+    .nav-link {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+    .nav-link span {
+        display: none;
+    }
+    #theme-toggle {
+        width: 38px;
+        height: 38px;
+    }
+    .hero {
+        padding-top: 100px;
+    }
+    
+    .project-card,
+    .project-card:nth-of-type(even) {
+        display: block;
+        background-color: var(--bg-secondary);
+        padding: 2rem;
+        border-radius: 4px;
+        box-shadow: 0 10px 30px -15px var(--shadow-color);
+    }
+    .project-image, 
+    .project-card:nth-of-type(even) .project-image {
+        display: none;
+    }
+    .project-content,
+    .project-card:nth-of-type(even) .project-content {
+        text-align: left;
+    }
+    .project-description {
+        background-color: transparent;
+        padding: 0;
+        box-shadow: none;
+    }
+    .project-tags,
+    .project-card:nth-of-type(even) .project-tags {
+        justify-content: flex-start;
+    }
+     .project-links,
+    .project-card:nth-of-type(even) .project-links {
+        justify-content: flex-start;
+    }
+}
