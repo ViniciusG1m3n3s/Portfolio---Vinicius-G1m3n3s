@@ -418,6 +418,9 @@ body {
 [data-theme='dark'] .project-image img {
     filter: grayscale(100%) contrast(1) brightness(0.9);
 }
+[data-theme='light'] .project-image img {
+    filter: grayscale(100%) contrast(1) brightness(0.9);
+}
 .project-card:hover .project-image img {
     filter: none;
     mix-blend-mode: normal;
